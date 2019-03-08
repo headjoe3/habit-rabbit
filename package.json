@@ -1,0 +1,23 @@
+{
+  "name": "habit-rabbit",
+  "version": "0.0.1",
+  "description": "OI OI WHATS HAPPENING PEOPLE",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/headjoe3/habit-rabbit.git"
+  },
+  "author": "Robert Tulley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/headjoe3/habit-rabbit/issues"
+  },
+  "homepage": "https://github.com/headjoe3/habit-rabbit#readme",
+  "dependencies": {
+    "@types/node": "^11.10.5",
+    "discord.js": "^11.4.2"
+  }
+}
