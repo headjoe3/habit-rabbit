@@ -1,7 +1,7 @@
 import { CommandoClient, CommandMessage } from "discord.js-commando";
-import UserDataCommand, { log_habit_invalidation } from "../../util_user_commands";
-import { HabitInfo, REMIND_INTERVAL_INFO_MAP, Config } from "../../util_types";
-import { format_date } from "../../responses";
+import UserDataCommand, { log_habit_invalidation } from "../../util/util_user_commands";
+import { HabitInfo, REMIND_INTERVAL_INFO_MAP, Config } from "../../util/util_types";
+import { format_date } from "../../util/responses";
 
 const { user_habit_key } = Config
 

@@ -1,7 +1,7 @@
 import { CommandoClient, CommandMessage } from "discord.js-commando";
-import UserDataCommand from "../../util_user_commands";
-import { get_commit_response } from "../../responses";
-import { HabitInfo, Config } from "../../util_types";
+import UserDataCommand from "../../util/util_user_commands";
+import { get_commit_response } from "../../util/responses";
+import { HabitInfo, Config } from "../../util/util_types";
 
 const { user_habit_key } = Config
 

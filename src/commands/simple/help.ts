@@ -1,6 +1,6 @@
 import { Command, CommandoClient, CommandMessage } from "discord.js-commando";
-import { format_usage } from "../../responses";
-import { has_mod_permissions } from "../../util_user_commands";
+import { format_usage } from "../../util/responses";
+import { has_mod_permissions } from "../../util/util_user_commands";
 import { MessageEmbed, RichEmbed } from "discord.js";
 
 export default class HelpCommand extends Command {
@@ -53,7 +53,7 @@ export default class HelpCommand extends Command {
                 for (let [command_name, command] of this.client.registry.groups.get('moderator')!.commands) {
                     embed.addField(
                         `\`${format_usage(command)}\``,
-                        `${command.description}`
+                        `(Mod only) ${command.description}`
                     )
                 }
 

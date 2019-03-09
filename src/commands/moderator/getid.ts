@@ -1,6 +1,5 @@
 import { CommandoClient, CommandMessage } from "discord.js-commando";
-import UserDataCommand, { has_mod_permissions } from "../../util_user_commands";
-import { HabitInfo, REMIND_INTERVAL_INFO_MAP } from "../../util_types";
+import UserDataCommand, { has_mod_permissions } from "../../util/util_user_commands";
 
 export default class GetIDCommand extends UserDataCommand {
     constructor(client: CommandoClient) {
@@ -8,7 +7,7 @@ export default class GetIDCommand extends UserDataCommand {
             name: "getid",
             group: "moderator",
             memberName: "getid",
-            description: "(Mod only) Gets the id of a server object",
+            description: "Gets the id of a server object",
             args: [
                 {
                     key: "object_type",

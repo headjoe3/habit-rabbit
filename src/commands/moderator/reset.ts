@@ -1,6 +1,6 @@
 import { CommandoClient, CommandMessage } from "discord.js-commando";
-import UserDataCommand, { has_mod_permissions, set_user_key } from "../../util_user_commands";
-import { HabitInfo, REMIND_INTERVAL_INFO_MAP, Config } from "../../util_types";
+import UserDataCommand, { has_mod_permissions, set_user_key } from "../../util/util_user_commands";
+import { HabitInfo, REMIND_INTERVAL_INFO_MAP, Config } from "../../util/util_types";
 
 const { user_habit_key } = Config
 
@@ -10,13 +10,13 @@ export default class ResetReminderCooldownCommand extends UserDataCommand {
             name: "reset",
             group: "moderator",
             memberName: "reset",
-            description: "(Mod only) Resets an object in your user data",
+            description: "Resets an object in your user data",
             args: [
                 {
                     key: "object_name",
                     type: "string",
-                    label: "object name",
-                    prompt: "What object do you want to reset (cooldown|habit)?"
+                    label: "cooldown | habit",
+                    prompt: "What object do you want to reset (cooldown | habit)?"
                 }
             ]
         })

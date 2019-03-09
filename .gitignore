@@ -1,4 +1,6 @@
 node_modules
 dist
 .vscode
-config.json
+rabbit-config.json
+ec2_config
+settings.sqlite3

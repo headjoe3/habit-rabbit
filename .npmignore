@@ -1,1 +1,5 @@
-config.json
+node_modules
+dist
+rabbit-config.json
+ec2_config
+settings.sqlite3

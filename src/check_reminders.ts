@@ -1,7 +1,7 @@
 import { Message } from "discord.js";
-import { get_user_key, set_user_key } from "./util_user_commands";
+import { get_user_key, set_user_key } from "./util/util_user_commands";
 import { CommandoClient } from "discord.js-commando";
-import { HabitInfo, REMIND_INTERVAL_INFO_MAP, REMIND_INTERVAL_USAGE, Config } from "./util_types";
+import { HabitInfo, REMIND_INTERVAL_INFO_MAP, REMIND_INTERVAL_USAGE, Config } from "./util/util_types";
 
 const { user_habit_key } = Config
 

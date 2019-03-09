@@ -120,9 +120,10 @@ const CONFIG_TYPE = t.type({
     "mod_roles": t.array(t.string),
     "database_path": t.string,
     "user_habit_key": t.string,
+    "command_prefix": t.string,
 })
 
-let user_config = require("./config.json")
+let user_config = require("../../rabbit-config.json")
 if (!CONFIG_TYPE.is(user_config)) {
     throw ThrowReporter.report(CONFIG_TYPE.decode(user_config))
 }
