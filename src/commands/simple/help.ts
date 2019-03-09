@@ -70,7 +70,7 @@ export default class HelpCommand extends Command {
             if (message.guild === null) {
                 return
             } else {
-                return message.reply(`${message.author} Sent you a DM with a list of commants`)
+                return message.channel.sendMessage(`${message.author} Sent you a DM with a list of commands`)
             }
         } else {
             const command = this.group.commands.get(args.command_name)
