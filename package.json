@@ -18,6 +18,10 @@
   "homepage": "https://github.com/headjoe3/habit-rabbit#readme",
   "dependencies": {
     "@types/node": "^11.10.5",
-    "discord.js": "^11.4.2"
+    "discord.js": "^11.4.2",
+    "discord.js-commando": "^0.10.0",
+    "io-ts": "^1.8.2",
+    "path": "^0.12.7",
+    "sqlite": "^3.0.2"
   }
 }
