@@ -10,7 +10,7 @@ const { token, database_path } = Config
 const bot = new Commando.CommandoClient()
 
 bot.registry.registerGroup("simple", "simple")
-bot.registry.registerGroup("admin", "admin")
+bot.registry.registerGroup("moderator", "moderator")
 bot.registry.registerDefaultTypes()
 bot.registry.registerCommandsIn(__dirname + "/commands")
 

@@ -6,7 +6,7 @@ export default class GetIDCommand extends UserDataCommand {
     constructor(client: CommandoClient) {
         super(client, {
             name: "getid",
-            group: "admin",
+            group: "moderator",
             memberName: "getid",
             description: "(Mod only) Gets the id of a server object",
             args: [
@@ -29,7 +29,7 @@ export default class GetIDCommand extends UserDataCommand {
     hasPermission(message: CommandMessage) {
         return has_mod_permissions(message.author, message.guild)
     }
-    
+
     async run(message: CommandMessage, args: { object_type: string, object_name: string }) {
         if (!has_mod_permissions(message.author, message.guild)) {
             console.log("Silent command fail for user: " + message.author.username)

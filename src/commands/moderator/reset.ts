@@ -8,7 +8,7 @@ export default class ResetReminderCooldownCommand extends UserDataCommand {
     constructor(client: CommandoClient) {
         super(client, {
             name: "reset",
-            group: "admin",
+            group: "moderator",
             memberName: "reset",
             description: "(Mod only) Resets an object in your user data",
             args: [
@@ -25,7 +25,7 @@ export default class ResetReminderCooldownCommand extends UserDataCommand {
     hasPermission(message: CommandMessage) {
         return has_mod_permissions(message.author, message.guild)
     }
-    
+
     async run(message: CommandMessage, args: { object_name: string }) {
 
         // Retrieve from database

@@ -50,7 +50,7 @@ export default class HelpCommand extends Command {
                     .setTitle('All moderator commands')
                     .setColor(0x008000)
 
-                for (let [command_name, command] of this.client.registry.groups.get('admin')!.commands) {
+                for (let [command_name, command] of this.client.registry.groups.get('moderator')!.commands) {
                     embed.addField(
                         `\`${format_usage(command)}\``,
                         `${command.description}`
