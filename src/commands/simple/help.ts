@@ -7,6 +7,7 @@ export default class HelpCommand extends Command {
     constructor(bot: CommandoClient) {
         super(bot, {
             name: 'help',
+            aliases: ["commands"],
             group: 'simple',
             memberName: 'help',
             description: 'Lists all of Habit Rabbit\'s commands',

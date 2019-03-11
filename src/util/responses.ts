@@ -1,9 +1,11 @@
 import { User } from "discord.js";
 import { Command } from "discord.js-commando";
 
-type CommitResponse  = ((user: User) => string) | string
-const COMMIT_RESPONSES: CommitResponse[] = [
-    "Your commitment has been added to the database!"
+type ReportResponses  = ((user: User) => string) | string
+const REPORT_RESPONSES: ReportResponses[] = [
+    "Keep the updates coming, accountability is key to sustained success!",
+    "Each day provides its own gifts.",
+    "Let’s go champ!",
 ]
 
 type MonthIndex = 0|1|2|3|4|5|6|7|8|9|10|11
@@ -26,7 +28,11 @@ export function format_date(date: Date) {
 }
 
 export function get_commit_response(user: User) {
-    const response = COMMIT_RESPONSES[Math.floor(Math.random() * COMMIT_RESPONSES.length)]
+    return "Your commitment has been added to the database!"
+}
+
+export function get_report_response(user: User) {
+    const response = REPORT_RESPONSES[Math.floor(Math.random() * REPORT_RESPONSES.length)]
     if (typeof response === "string") {
         return response
     } else {

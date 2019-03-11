@@ -9,7 +9,8 @@ import { Config } from "./util/util_types";
 const { token, database_path, command_prefix } = Config
 
 const bot = new Commando.CommandoClient({
-    commandPrefix: command_prefix
+    commandPrefix: command_prefix,
+    unknownCommandResponse: false,
 })
 
 bot.registry.registerGroup("simple", "simple")

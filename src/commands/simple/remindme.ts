@@ -49,7 +49,7 @@ export default class RemindMeCommand extends UserDataCommand {
                 log_habit_invalidation(habit)
                 return
             }
-            return message.channel.sendMessage(`You have not made a habit commitment yet! Use \`${this.group.commands.get("commit")!.usage()}\` to make a commitment`)
+            return message.channel.sendMessage(`You have not made a habit commitment yet! Use ${this.group.commands.get("commit")!.usage()} to make a commitment`)
         }
     }
 }
