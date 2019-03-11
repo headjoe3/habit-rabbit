@@ -27,7 +27,6 @@ export default class ResetReminderCooldownCommand extends UserDataCommand {
     }
 
     async run(message: CommandMessage, args: { object_name: string }) {
-
         // Retrieve from database
         const habit = this.get_user_key(message.author, user_habit_key)
 

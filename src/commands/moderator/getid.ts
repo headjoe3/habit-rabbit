@@ -25,16 +25,13 @@ export default class GetIDCommand extends UserDataCommand {
         })
     }
 
+    /* I would but... kind of need mod perms to get the ID of the mod role. This is a fairly benign command.
     hasPermission(message: CommandMessage) {
         return has_mod_permissions(message.author, message.guild)
     }
+    */
 
     async run(message: CommandMessage, args: { object_type: string, object_name: string }) {
-        if (!has_mod_permissions(message.author, message.guild)) {
-            console.log("Silent command fail for user: " + message.author.username)
-            return
-        }
-
         let found_id = "not found"
         switch (args.object_type) {
             case "user": {
