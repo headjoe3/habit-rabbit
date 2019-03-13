@@ -1,6 +1,7 @@
 import { CommandoClient, CommandMessage } from "discord.js-commando";
 import UserDataCommand, { log_habit_invalidation } from "../../util/util_user_commands";
 import { REMIND_INTERVAL_USAGE, HabitInfo, REMIND_INTERVAL_INFO_MAP, Config } from "../../util/util_types";
+import { format_usage } from "../../util/responses";
 
 const { user_habit_key } = Config
 
@@ -49,7 +50,7 @@ export default class RemindMeCommand extends UserDataCommand {
                 log_habit_invalidation(habit)
                 return
             }
-            return message.channel.sendMessage(`You have not made a habit commitment yet! Use ${this.group.commands.get("commit")!.usage()} to make a commitment`)
+            return message.channel.sendMessage(`You have not made a habit commitment yet! Use ${format_usage(this.group.commands.get("commit")!)} to make a commitment`)
         }
     }
 }

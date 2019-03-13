@@ -89,10 +89,12 @@ export const ReportInfo = t.intersection([
     // Required parameters (DO NOT CHANGE unless you want data to be invalidated!)
     t.type({
         timestamp: t.number,
+        description: t.string,
     }),
     
     // Optional parameters (You can add and remove from these!)
     t.partial({
+        success_tag: t.string,
     })
 ])
 

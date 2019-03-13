@@ -1,7 +1,7 @@
 import { CommandoClient, CommandMessage } from "discord.js-commando";
 import UserDataCommand, { log_habit_invalidation } from "../../util/util_user_commands";
 import { HabitInfo, REMIND_INTERVAL_INFO_MAP, Config } from "../../util/util_types";
-import { format_date } from "../../util/responses";
+import { format_date, format_usage } from "../../util/responses";
 
 const { user_habit_key } = Config
 
@@ -31,6 +31,12 @@ ${habit.description}
 \`\`\`
 Commitment Date: \`${format_date(commitment_date)}\`
 Reminding interval: \`${interval_info ? interval_info.display_name : "Never"}\`
+Last report: \`${
+    (habit.report_history.length > 0)
+        ? format_date(new Date(habit.report_history[habit.report_history.length - 1].timestamp))
+        : "You haven't made a report yet"
+}\`
+Reports: \`${habit.report_history.length}\` (Use \`${format_usage(this.group.commands.get("viewreport")!)}\` to view)
 `
             )
         } else {
@@ -38,7 +44,7 @@ Reminding interval: \`${interval_info ? interval_info.display_name : "Never"}\`
                 log_habit_invalidation(habit)
                 return
             }
-            return message.channel.sendMessage(`You have not made a habit commitment yet! Use ${this.group.commands.get("commit")!.usage()} to make a commitment`)
+            return message.channel.sendMessage(`You have not made a habit commitment yet! Use ${format_usage(this.group.commands.get("commit")!)} to make a commitment`)
         }
     }
 }
