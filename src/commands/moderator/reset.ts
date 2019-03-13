@@ -15,7 +15,7 @@ export default class ResetReminderCooldownCommand extends UserDataCommand {
                 {
                     key: "object_name",
                     type: "string",
-                    label: "cooldown | habit",
+                    label: "cooldown | habit | reports",
                     prompt: "What object do you want to reset (cooldown | habit)?"
                 }
             ]
@@ -35,7 +35,7 @@ export default class ResetReminderCooldownCommand extends UserDataCommand {
             switch(args.object_name) {
                 case "habit": {
                     set_user_key(this.client, message.author, user_habit_key, undefined)
-                    obj_name = "habit"
+                    obj_name = "Habit"
                     break
                 }
                 case "cooldown": {
@@ -45,6 +45,12 @@ export default class ResetReminderCooldownCommand extends UserDataCommand {
                         set_user_key(this.client, message.author, user_habit_key, habit)
                         obj_name = "Reminder cooldown"
                     }
+                    break
+                }
+                case "reports": {
+                    habit.report_history = []
+                    set_user_key(this.client, message.author, user_habit_key, habit)
+                    obj_name = "Reports"
                     break
                 }
             }
