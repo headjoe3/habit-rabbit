@@ -27,16 +27,28 @@ export default class CommitCommand extends UserDataCommand {
     async run(message: CommandMessage, args: { habitdescription: string }) {
         const { habitdescription } = args
 
-        const habitInfo: HabitInfo = {
+        const existing = this.get_user_key(message.author, user_habit_key)
+        let baseHabitInfo = {
             description: habitdescription,
             timestamp: message.createdTimestamp,
             remind_interval: DEFAULT_REMINDING_INTERVAL,
-            report_history: [],
-            last_reminder_timestamp: undefined,
+        }
+        let fullHabitInfo: HabitInfo
+        if (HabitInfo.is(existing)) {
+            fullHabitInfo = {
+                ...existing,
+                ...baseHabitInfo,
+            }
+        } else {
+            fullHabitInfo = {
+                report_history: [],
+                last_reminder_timestamp: undefined,
+                ...baseHabitInfo,
+            }
         }
 
         // Add to database
-        this.set_user_key(message.author, user_habit_key, habitInfo)
+        this.set_user_key(message.author, user_habit_key, fullHabitInfo)
 
         // Response message
         return message.reply(get_commit_response(message.author))

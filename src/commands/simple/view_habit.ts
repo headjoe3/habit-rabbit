@@ -9,6 +9,7 @@ export default class ViewHabitCommand extends UserDataCommand {
     constructor(client: CommandoClient) {
         super(client, {
             name: "viewhabit",
+            aliases: ["viewcommitment"],
             group: "simple",
             memberName: "viewhabit",
             description: "Views your commitment in the database",

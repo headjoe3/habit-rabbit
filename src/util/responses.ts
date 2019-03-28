@@ -6,6 +6,18 @@ const REPORT_RESPONSES: ReportResponses[] = [
     "Keep the updates coming, accountability is key to sustained success!",
     "Each day provides its own gifts.",
     "Let’s go champ!",
+    "Thanks, and good luck on the path!",
+    "When you do a little more than you can you get stronger, and we don’t know the upper limits to that",
+    "Action is the next step to realize your goals",
+    "Get after it!",
+    "Perfect is the Enemy of the Good.",
+    "The best time to plant a tree was 20 years ago, the second best time is NOW",
+    "We’re all rooting for you! You can do it!",
+    "You are not rewarded for the comfortable choice.",
+    "Small things, when compounded over time, tend to have big consequences.",
+    "To live one day well is the same as to live ten thousand days well. To master twenty-four hours is to master your life.",
+    "Sometimes the truth hurts, and sometimes it feels real good.",
+    "Scar tissue is stronger than regular tissue. Realize the strength, move on",
 ]
 
 type MonthIndex = 0|1|2|3|4|5|6|7|8|9|10|11
