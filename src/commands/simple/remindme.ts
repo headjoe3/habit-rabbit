@@ -1,5 +1,5 @@
 import { CommandoClient, CommandMessage } from "discord.js-commando";
-import UserDataCommand, { log_habit_invalidation } from "../../util/util_user_commands";
+import { UserDataCommand, log_habit_invalidation } from "../../util/util_user_commands";
 import { REMIND_INTERVAL_USAGE, HabitInfo, REMIND_INTERVAL_INFO_MAP, Config } from "../../util/util_types";
 import { format_usage } from "../../util/responses";
 

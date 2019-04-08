@@ -100,6 +100,20 @@ export const ReportInfo = t.intersection([
 
 export type ReportInfo = t.TypeOf<typeof ReportInfo>
 
+export const HabitCommitmentInfo = t.intersection([
+    // Required parameters (DO NOT CHANGE unless you want data to be invalidated!)
+    t.type({
+        description: t.string,
+        timestamp: t.number,
+    }),
+
+    // Optional parameters (You can add and remove from these!)
+    t.partial({
+    })
+])
+
+export type HabitCommitmentInfo = t.TypeOf<typeof HabitCommitmentInfo>
+
 export const HabitInfo = t.intersection([
     // Required parameters (DO NOT CHANGE unless you want data to be invalidated!)
     t.type({
@@ -112,6 +126,7 @@ export const HabitInfo = t.intersection([
     t.partial({
         remind_interval: t.string,
         last_reminder_timestamp: t.number,
+        habit_commitment_history: t.array(HabitCommitmentInfo),
     })
 ])
 

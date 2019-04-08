@@ -1,13 +1,9 @@
 import { CommandoClient, CommandMessage } from "discord.js-commando";
-import UserDataCommand, { log_habit_invalidation } from "../../util/util_user_commands";
-import { HabitInfo, REMIND_INTERVAL_INFO_MAP, Config } from "../../util/util_types";
+import { UserDataCommand, log_habit_invalidation } from "../../util/util_user_commands";
+import { HabitInfo, Config } from "../../util/util_types";
 import { format_date, format_usage } from "../../util/responses";
-import { RichEmbed } from "discord.js";
 
 const { user_habit_key, command_prefix } = Config
-
-const REPORTS_PER_PAGE = 10
-const PREVIEW_LENGTH = 220
 
 export default class ViewReportCommand extends UserDataCommand {
     constructor(client: CommandoClient) {

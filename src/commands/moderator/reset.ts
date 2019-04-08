@@ -1,5 +1,5 @@
 import { CommandoClient, CommandMessage } from "discord.js-commando";
-import UserDataCommand, { has_mod_permissions, set_user_key } from "../../util/util_user_commands";
+import { UserDataCommand, has_mod_permissions, set_user_key } from "../../util/util_user_commands";
 import { HabitInfo, REMIND_INTERVAL_INFO_MAP, Config } from "../../util/util_types";
 
 const { user_habit_key } = Config

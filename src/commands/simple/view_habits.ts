@@ -6,16 +6,15 @@ import { RichEmbed } from "discord.js";
 
 const { user_habit_key } = Config
 
-const REPORTS_PER_PAGE = 10
-const PREVIEW_LENGTH = 220
+const HABITS_PER_PAGE = 10
 
-export default class ViewReportsCommand extends UserDataCommand {
+export default class ViewHabitsCommand extends UserDataCommand {
     constructor(client: CommandoClient) {
         super(client, {
-            name: "viewreports",
+            name: "viewhabits",
             group: "simple",
-            memberName: "viewreports",
-            description: "Views your most recent reports",
+            memberName: "viewhabits",
+            description: "Views your most recent habit commitments",
             args: [
                 {
                     key: "page",
@@ -35,39 +34,36 @@ export default class ViewReportsCommand extends UserDataCommand {
             const commitment_date = new Date(habit.timestamp)
             const interval_info = REMIND_INTERVAL_INFO_MAP.get(habit.remind_interval || "")
 
-            if (habit.report_history.length > 0) {
-                const pages = Math.ceil(habit.report_history.length / REPORTS_PER_PAGE)
-                const page_start = Math.max(0, habit.report_history.length - 1 - (args.page - 1) * REPORTS_PER_PAGE)
+            // Vicariously convert legacy data
+            if (!habit.habit_commitment_history) {
+                habit.habit_commitment_history = [{
+                    description: habit.description,
+                    timestamp: habit.timestamp,
+                }]
+            }
+
+            if (habit.habit_commitment_history.length > 0) {
+                const pages = Math.ceil(habit.habit_commitment_history.length / HABITS_PER_PAGE)
+                const page_start = Math.max(0, habit.habit_commitment_history.length - 1 - (args.page - 1) * HABITS_PER_PAGE)
                 message.author.createDM()
                     .then((channel) => {
-                        let collated_reports = new RichEmbed()
-                            .setTitle(`Recent report history (page ${args.page} of ${pages})\n`)
+                        let collated_habit_commitments = new RichEmbed()
+                            .setTitle(`Recent habit commitment history (page ${args.page} of ${pages})\n`)
                             .setColor(0x008000)
                         
-                        let result_was_truncated = false
                         for (
-                            let i = Math.max(0, page_start - REPORTS_PER_PAGE);
+                            let i = Math.max(0, page_start - HABITS_PER_PAGE);
                             i <= page_start;
                             i++
                         ) {
-                            const report = habit.report_history[i]
-                            if (report.description.length > PREVIEW_LENGTH) {
-                                result_was_truncated = true
-                            }
-                            collated_reports.addField(
-                                `\nReport #${i + 1} on  ${format_date(new Date(report.timestamp))}`,
-                                report.description.length > PREVIEW_LENGTH
-                                    ? `\`\`\`${report.description.substr(0, PREVIEW_LENGTH)}...\`\`\``
-                                    : `\`\`\`${report.description}\`\`\``
+                            const habitCommitment = habit.habit_commitment_history![i]
+                            collated_habit_commitments.addField(
+                                `\nHabit #${i + 1} on  ${format_date(new Date(habitCommitment.timestamp))}`,
+                                `\`\`\`${habitCommitment.description}\`\`\``
                             )
                         }
 
-                        if (result_was_truncated) {
-                            collated_reports.addBlankField()
-                            collated_reports.addField("To view a full report:", `Use ${format_usage(this.group.commands.get("viewreport")!)}`)
-                        }
-
-                        channel.sendEmbed(collated_reports)
+                        channel.sendEmbed(collated_habit_commitments)
                     })
                 if (message.guild === null) {
                     return
@@ -75,7 +71,7 @@ export default class ViewReportsCommand extends UserDataCommand {
                     return message.channel.sendMessage("Sent you a DM")
                 }
             } else {
-                return message.channel.sendMessage("You have not made any reports yet")
+                return message.channel.sendMessage(`You have not made any habit commitments yet! Use ${format_usage(this.group.commands.get("commit")!)} to make a commitment`)
             }
         } else {
             if (typeof habit === "object") {

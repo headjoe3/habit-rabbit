@@ -1,5 +1,5 @@
-import { Command, CommandMessage, CommandoClient, CommandInfo } from "discord.js-commando";
-import { User, Guild, GuildMember } from "discord.js";
+import { Command, CommandoClient, CommandInfo } from "discord.js-commando";
+import { User, Guild } from "discord.js";
 import { Config, HabitInfo } from "./util_types";
 import { PathReporter } from "io-ts/lib/PathReporter";
 
@@ -13,7 +13,7 @@ export function set_user_key(client: CommandoClient, user: User, key: string, va
     return client.provider.set(GLOBAL_USER_SETTINGS, user.id + "_" + key, value)
 }
 
-export default abstract class UserDataCommand extends Command {
+export abstract class UserDataCommand extends Command {
     constructor(client: CommandoClient, info: CommandInfo) {
         super(client, info)
     }

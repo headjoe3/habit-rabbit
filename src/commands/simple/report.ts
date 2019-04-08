@@ -1,6 +1,6 @@
 import { CommandoClient, CommandMessage } from "discord.js-commando";
-import UserDataCommand, { get_user_key, log_habit_invalidation } from "../../util/util_user_commands";
-import { get_commit_response, get_report_response, format_usage } from "../../util/responses";
+import { UserDataCommand, log_habit_invalidation } from "../../util/util_user_commands";
+import { get_report_response, format_usage } from "../../util/responses";
 import { HabitInfo, Config } from "../../util/util_types";
 
 const { user_habit_key } = Config
@@ -8,8 +8,6 @@ const SUCCESS_TAG_KEYWORDS = [
     "success",
     "failure"
 ]
-
-const DEFAULT_REMINDING_INTERVAL = 'daily'
 
 export default class ReportCommand extends UserDataCommand {
     constructor(client: CommandoClient) {

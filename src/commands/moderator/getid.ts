@@ -1,5 +1,5 @@
 import { CommandoClient, CommandMessage } from "discord.js-commando";
-import UserDataCommand, { has_mod_permissions } from "../../util/util_user_commands";
+import { UserDataCommand } from "../../util/util_user_commands";
 
 export default class GetIDCommand extends UserDataCommand {
     constructor(client: CommandoClient) {
