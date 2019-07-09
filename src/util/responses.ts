@@ -36,7 +36,7 @@ const MONTH_MAP: Record<MonthIndex, string> = {
     [11]: "Dec",
 }
 export function format_date(date: Date) {
-    return `${MONTH_MAP[date.getMonth() as MonthIndex]} ${date.getDate()}, ${date.getFullYear()}`
+    return '``'+date.getFullYear()+'-'+('00'+date.getMonth()).slice(-2)+'-'+('00'+date.getDate()).slice(-2)+'``'
 }
 
 export function get_commit_response(user: User) {
